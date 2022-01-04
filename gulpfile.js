@@ -6,7 +6,7 @@ const uglify = require('gulp-uglify') // minify js
 const babel = require('gulp-babel') // new version js to old
 const del = require('del') // delete dist dirrectory
 
-const path = {
+const path = { // paths to files
     style: {
         src: 'src/style/**/*.scss',
         dest: 'dist/style/'
@@ -21,7 +21,7 @@ function clean() { // dist cleaner
     return del(['dist'])
 }
 
-function style() {
+function style() { // style's compiller
     return gulp.src(path.style.src)
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS())
@@ -32,7 +32,7 @@ function style() {
         .pipe(gulp.dest(path.style.dest))
 }
 
-function script() {
+function script() { // script's compiller
     return gulp.src(path.script.src, {
         sourcemaps: true
       })
@@ -45,12 +45,12 @@ function script() {
       .pipe(gulp.dest(path.script.dest))
 }
 
-function watch() {
+function watch() { // gulp watcher
     gulp.watch(path.style.src, style);
     gulp.watch(path.script.src, script);
 }
 
-const build = gulp.series(clean, gulp.parallel(style, script), watch)
+const build = gulp.series(clean, gulp.parallel(style, script), watch) // build a project
 
 exports.style = style
 exports.script = script
