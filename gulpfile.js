@@ -5,6 +5,8 @@ const rename = require('gulp-rename') // rename files (.min)
 const uglify = require('gulp-uglify') // minify js
 const babel = require('gulp-babel') // new version js to old
 const del = require('del') // delete dist dirrectory
+const sourcemaps = require('gulp-sourcemaps') // sourcemap for easly debugging
+const autoprefixer = require('gulp-autoprefixer');
 
 const path = { // paths to files
     style: {
@@ -23,25 +25,34 @@ function clean() { // dist cleaner
 
 function style() { // style's compiller
     return gulp.src(path.style.src)
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(cleanCSS())
+        .pipe(autoprefixer({
+			cascade: false
+		}))
+        .pipe(cleanCSS({
+            level: 2
+        }))
         .pipe(rename({
             basename: 'main',
             suffix: '.min'
         }))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.style.dest))
 }
 
 function script() { // script's compiller
-    return gulp.src(path.script.src, {
-        sourcemaps: true
-      })
-      .pipe(babel())
+    return gulp.src(path.script.src)
+      .pipe(sourcemaps.init())
+      .pipe(babel({
+        presets: ['@babel/env']
+    }))
       .pipe(uglify())
       .pipe(rename({
         basename: 'main',
         suffix: '.min'
-    }))
+      }))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(path.script.dest))
 }
 
