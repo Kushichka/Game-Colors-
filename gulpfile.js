@@ -22,6 +22,10 @@ const path = {
     index: {
         src: 'src/index.html',
         dest: 'dist/'
+    },
+    normalize: {
+        src: 'src/style/**/normalize.css',
+        dest: 'dist/style/'
     }
 }
 
@@ -86,6 +90,19 @@ function index() {
       .pipe(browserSync.stream())
 }
 
+// normalize compiller //
+function normalize() {
+    return src(path.normalize.src)
+        .pipe(cleanCSS({
+            level: 2
+        }))
+        .pipe(rename({
+            basename: 'normalize',
+            suffix: '.min'
+        }))
+        .pipe(dest(path.normalize.dest))
+}
+
 // gulp watcher //
 function watcher() {
     watch(path.style.src, style).on('change', browserSync.reload);
@@ -94,13 +111,14 @@ function watcher() {
 }
 
 // build a project //
-const build = series(clean, style, script, index, parallel(webServer, watcher))
+const build = series(clean, parallel(normalize, style, script, index), parallel(webServer, watcher))
 
 
 // exports //
 exports.style = style
 exports.script = script
 exports.index = index
+exports.normalize = normalize
 exports.clean = clean
 exports.watcher = watcher
 exports.webServer = webServer
