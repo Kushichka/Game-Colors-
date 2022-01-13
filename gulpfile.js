@@ -1,18 +1,23 @@
+// plugins //
+
 const {src, dest, series, parallel, watch} = require('gulp')    // gulp
       sass = require('gulp-sass')(require('sass'))              // sass compiller 
-      cleanCSS = require('gulp-clean-css')                      // minify css
-      rename = require('gulp-rename')                           // rename files (.min)
+      htmlmin = require('gulp-htmlmin')                         // minify html
       uglify = require('gulp-uglify')                           // minify js
+      rename = require('gulp-rename')                           // rename files (.min)
       babel = require('gulp-babel')                             // new version js to old
       del = require('del')                                      // delete dist dirrectory
       sourcemaps = require('gulp-sourcemaps')                   // sourcemap for easly debugging
       autoprefixer = require('gulp-autoprefixer')               // auto css prefixes for others brousers
       browserSync = require('browser-sync').create()            // autoreload page
+      concat = require('gulp-concat')                           // concat all files in one
+      imagemin = require('gulp-imagemin')                       // images compressor
+      newer = require('gulp-newer')                             // compress only new files
 
 // paths to files //
 const path = {
     style: {
-        src: 'src/style/**/*.scss',
+        src: 'src/style/**/main.scss',
         dest: 'dist/style/'
     },
     script: {
@@ -23,22 +28,12 @@ const path = {
         src: 'src/index.html',
         dest: 'dist/'
     },
-    normalize: {
-        src: 'src/style/**/normalize.css',
-        dest: 'dist/style/'
+    img: {
+        src: 'src/img/*',
+        dest: 'dist/img/'
     }
 }
 
-
-// browser-sync server //
-function webServer() {
-    browserSync.init({
-        server: {
-            baseDir: './dist',
-            notify: false
-        }
-    });
-}
 
 // dist cleaner //
 function clean() {
@@ -49,13 +44,12 @@ function clean() {
 function style() {
     return src(path.style.src)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
         .pipe(autoprefixer({
 			cascade: false
 		}))
-        .pipe(cleanCSS({
-            level: 2
-        }))
         .pipe(rename({
             basename: 'main',
             suffix: '.min'
@@ -68,59 +62,62 @@ function style() {
 // script's compiller //
 function script() {
     return src(path.script.src)
-      .pipe(sourcemaps.init())
-      .pipe(babel({
-        presets: ['@babel/env']
-    }))
-      .pipe(uglify())
-      .pipe(rename({
-        basename: 'main',
-        suffix: '.min'
-      }))
-      .pipe(sourcemaps.write('.'))
-      .pipe(dest(path.script.dest))
-      .pipe(browserSync.stream())
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(uglify())
+        .pipe(concat('main.min.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest(path.script.dest))
+        .pipe(browserSync.stream())
 }
 
 // index compiller //
 function index() {
     return src(path.index.src)
-      .pipe(sourcemaps.init())
-      .pipe(dest(path.index.dest))
-      .pipe(browserSync.stream())
+        .pipe(sourcemaps.init())
+        .pipe(htmlmin({
+            collapseWhitespace: true
+        }))
+        .pipe(dest(path.index.dest))
+        .pipe(browserSync.stream())
 }
 
-// normalize compiller //
-function normalize() {
-    return src(path.normalize.src)
-        .pipe(cleanCSS({
-            level: 2
-        }))
-        .pipe(rename({
-            basename: 'normalize',
-            suffix: '.min'
-        }))
-        .pipe(dest(path.normalize.dest))
+// image compiller //
+function img() {
+    return src(path.img.src)
+        .pipe(newer(path.img.dest))
+        .pipe(imagemin())
+        .pipe(dest(path.img.dest))
 }
 
 // gulp watcher //
 function watcher() {
+    browserSync.init({
+        server: {
+            baseDir: './dist'
+        }
+    });
     watch(path.style.src, style).on('change', browserSync.reload);
     watch(path.script.src, script).on('change', browserSync.reload);
     watch(path.index.src, index).on('change', browserSync.reload);
 }
 
 // build a project //
-const build = series(clean, parallel(normalize, style, script, index), parallel(webServer, watcher))
+const build = series(
+    clean,
+    parallel(style, script, index, img),
+    watcher
+)
 
 
 // exports //
 exports.style = style
 exports.script = script
 exports.index = index
-exports.normalize = normalize
+exports.img = img
 exports.clean = clean
 exports.watcher = watcher
-exports.webServer = webServer
 exports.build = build
 exports.default = build

@@ -1,0 +1,7 @@
+$maxWidth: 1100px;
+
+@mixin button-reset {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
