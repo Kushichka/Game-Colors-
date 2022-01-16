@@ -9,7 +9,7 @@
 }
 
 .container {
-    max-width: $maxWidth;
+    max-width: $maxWidth+$containerPadding;
     margin: 0 auto;
 }
 

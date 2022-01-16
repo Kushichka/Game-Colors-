@@ -1,5 +1,9 @@
 $maxWidth: 1100px;
+$containerPadding: 15px;
 
+// colors //
+
+// mixins //
 @mixin button-reset {
     border: none;
     padding: 0;
