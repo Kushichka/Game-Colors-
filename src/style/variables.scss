@@ -1,7 +1,13 @@
-$maxWidth: 1100px;
+// margins/paddings //
+$maxContainerWidth: 1100px;
 $containerPadding: 15px;
+$maxWrapperWidth: 1440px;
+
+// fonts //
+
 
 // colors //
+
 
 // mixins //
 @mixin button-reset {
