@@ -99,7 +99,8 @@ function watcher() {
             baseDir: './dist'
         }
     });
-    watch(path.style.src, style).on('change', browserSync.reload);
+    // watch(path.style.src, style).on('change', browserSync.reload);
+    watch('src/style/**/*', style).on('change', browserSync.reload);
     watch(path.script.src, script).on('change', browserSync.reload);
     watch(path.index.src, index).on('change', browserSync.reload);
 }
