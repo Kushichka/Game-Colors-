@@ -37,7 +37,7 @@ const path = {
 
 // dist cleaner //
 function clean() {
-    return del(['dist'])
+    return del(['dist/*', '!dist/img'])
 }
 
 // style's compiller //
