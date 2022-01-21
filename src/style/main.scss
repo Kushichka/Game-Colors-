@@ -1,2 +1,7 @@
-@import './imports.scss';
-
+@import './normalize.scss';
+@import './reset.scss';
+@import './variables.scss';
+@import './global.scss';
+@import './parts/header.scss';
+// other parts... //
+@import './parts/footer.scss';
