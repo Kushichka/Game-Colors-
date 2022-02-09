@@ -1,23 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.min.css">
-    <title>Document</title>
+    <title>Colors</title>
 </head>
+
 <body>
     <div class="wrapper">
-
-        <header class="header"></header>
-
-        <main class="main"></main>
-
-        <footer class="footer"></footer>
-
+        <div class="game">
+            <div class="game__field">
+                <ul class="game__field-list">
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                    <li class="game__field-square"></li>
+                </ul>
+            </div>
+            <div class="game__panel">
+                <div class="game__panel-score-table">
+                    <p class="game__panel-time">
+                        <span class="game__panel-time-minutes">
+                            00
+                        </span>
+                        :
+                        <span class="game__panel-time-seconds">
+                            00
+                        </span>
+                    </p>
+                    <p class="game__panel-steps">
+                        Steps:
+                        <span class="game__panel-steps-count">
+                            0
+                        </span>
+                    </p>
+                </div>
+                <button class="game__panel-btn">
+                    Restart
+                </button>
+                <div class="game__panel-best">
+                    <p class="game__panel-best-title">
+                        Best Time
+                    </p>
+                    <p class="game__panel-best-title">
+                        <span class="game__panel-best-minutes">
+                            00
+                        </span>
+                        :
+                        <span class="game__panel-best-seconds">
+                            00
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-
     <script src="script/main.min.js"></script>
 </body>
+
 </html>

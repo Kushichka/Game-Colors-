@@ -1,7 +1,6 @@
 {
   "name": "mybuild",
   "version": "1.0.5",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +24,14 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.45.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kushichka/GulpBuild.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kushichka/GulpBuild/issues"
+  },
+  "homepage": "https://github.com/Kushichka/GulpBuild#readme",
+  "description": ""
 }

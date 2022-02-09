@@ -1,17 +1,30 @@
 // margins/paddings //
-$maxContainerWidth: 1100px;
-$containerPadding: 15px;
-$maxWrapperWidth: 1440px;
+$maxWrapperWidth: 1200px;
+$wrapperPadding: 15px;
+
+// others //
+$squareWidth: 120px;
+$squareHeigh: 120px;
+$squareGap: 10px;
+$gameField: calc(($squareWidth * 4) + ($squareGap * 3));
 
 // fonts //
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 // colors //
-
+$body: #0E1B47;
+$closed1: #4158A3;
+$closed2: #5B6CA3;
+$brown1: #69380A;
+$brown2: #4F3319;
+$shadow: #030303;
+$darkBrown: #442303;
+$white: #adadad;
 
 // mixins //
 @mixin button-reset {
     border: none;
     padding: 0;
     background-color: transparent;
+    cursor: pointer;
 }
