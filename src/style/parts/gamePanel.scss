@@ -14,14 +14,6 @@
         border-radius: 10px;
         padding: 15px 25px;
     }
-    &-btn {
-        @include button-reset;
-        background-color: $body;
-        border-radius: 10px;
-        padding: 10px;
-        font-size: 25px;
-        color: $white;
-    }
     &-best {
         display: flex;
         flex-direction: column;

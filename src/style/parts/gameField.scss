@@ -1,24 +1,14 @@
 .game__field {
     max-width: $gameField;
     max-height: $gameField;
-
-    &-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: $squareGap;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: $squareGap;
+    
     &-square {
         width: $squareWidth;
         height: $squareHeigh;
-        background: linear-gradient(45deg, $closed1, $closed2);
         border-radius: 10px;
         filter: drop-shadow(0 0.1rem 0.2rem #030303);
-        
-        &:hover {
-            cursor: pointer;
-            background: linear-gradient(45deg, #3c5297, #536294);
-            filter: drop-shadow(0 0.1rem 0.2rem #030303);
-            // animation: addColor .7s linear;
-        }
     }
 }

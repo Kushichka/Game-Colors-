@@ -25,13 +25,5 @@
     "gulp-uglify": "^3.0.2",
     "sass": "^1.45.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kushichka/GulpBuild.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Kushichka/GulpBuild/issues"
-  },
-  "homepage": "https://github.com/Kushichka/GulpBuild#readme",
   "description": ""
 }
