@@ -1,0 +1,36 @@
+.game__panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 25px;
+    color: $white;
+
+    &-score-table {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        width: 180px;
+        background-color: $darkBrown;
+        border-radius: 10px;
+        padding: 15px 25px;
+    }
+    &-best {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        background-color: $darkBrown;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    &-restart {
+        padding: 5px;
+        font-size: 20px;
+        filter: drop-shadow(0 0.1rem 0.1rem $shadow);
+        transition: all 0.2s ease;
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+}

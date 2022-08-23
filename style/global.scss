@@ -1,0 +1,66 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    background-color: $body;
+    user-select: none;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.restart-btn {
+    @include button-reset;
+    background-color: $body;
+    border-radius: 10px;
+    color: $white;
+}
+
+.game {
+    display: flex;
+    padding: 30px;
+    margin: 30px;
+    background: linear-gradient(45deg, $brown1, $brown2);
+    border-radius: 10px;
+    gap: 35px;
+    box-shadow: 0 0 20px $shadow;
+    overflow: hidden;
+}
+
+.closed {
+    background: linear-gradient(45deg, $closed1, $closed2);
+    transition: all 0.2s ease;
+     &:hover {
+        cursor: pointer;
+        transform: scale(1.03);
+    }
+}
+
+.opened {
+    background-color: $opened;
+    box-shadow: inset 0 0 25px 0 $shadow;
+    &:hover {
+        cursor: default;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.openColor {
+    animation: openSquare .2s;
+}
+
+.shadow { 
+    filter: drop-shadow(0 0.1rem 0.1rem $shadow);
+}

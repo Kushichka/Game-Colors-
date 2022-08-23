@@ -1,0 +1,131 @@
+@media (max-width: 900px) {
+    .game {
+        padding: 20px;
+        margin: 20px;
+        gap: 25px;
+    }  
+    .game__field {
+        max-width: $gameField_992;
+        max-height: $gameField_992;
+        gap: $squareGap;
+    
+        &-square {
+            width: $squareWidth_992;
+            height: $squareHeigh_992;
+        }
+    }
+    .game__panel {
+        font-size: 20px;
+
+        &-score-table {
+            width: 160px;
+            padding: 10px 20px;
+        }
+        &-restart {
+            font-size: 15px;
+        }
+    }
+}
+
+@media (max-width: 730px) {
+    .game {
+        padding: 15px;
+        margin: 15px;
+        gap: 20px;
+    }  
+    .game__field {
+        max-width: $gameField_768;
+        max-height: $gameField_768;
+        gap: $squareGap_768;
+    
+        &-square {
+            width: $squareWidth_768;
+            height: $squareHeigh_768;
+        }
+    }
+    .game__panel {
+        font-size: 18px;
+
+        &-score-table {
+            width: 140px;
+            padding: 10px 20px;
+        }
+        &-restart {
+            font-size: 13px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .game {
+        padding: 13px;
+        margin: 13px;
+        gap: 15px;
+        border-radius: 7px;
+    }  
+    .game__field {
+        max-width: $gameField_576;
+        max-height: $gameField_576;
+        gap: $squareGap_576;
+    
+        &-square {
+            width: $squareWidth_576;
+            height: $squareHeigh_576;
+            border-radius: 7px;
+        }
+    }
+    .game__panel {
+        font-size: 13px;
+
+        &-score-table {
+            width: 120px;
+            padding: 7px 10px;
+            border-radius: 7px;
+        }
+        &-best {
+            border-radius: 7px;
+            padding: 7px;
+        }
+        &-restart {
+            font-size: 10px;
+            border-radius: 7px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .game {
+        padding: 8px;
+        margin: 5px;
+        gap: 7px;
+        border-radius: 5px;
+    }  
+    .game__field {
+        max-width: $gameField_320;
+        max-height: $gameField_320;
+        gap: $squareGap_320;
+    
+        &-square {
+            width: $squareWidth_320;
+            height: $squareHeigh_320;
+            border-radius: 5px;
+        }
+    }
+    .game__panel {
+        font-size: 8px;
+
+        &-score-table {
+            width: 70px;
+            padding: 6px 8px;
+            border-radius: 5px;
+        }
+        &-best {
+            border-radius: 5px;
+            padding: 6px;
+        }
+        &-restart {
+            font-size: 7px;
+            border-radius: 5px;
+        }
+    }
+}

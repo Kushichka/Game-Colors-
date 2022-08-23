@@ -1,0 +1,52 @@
+// margins/paddings //
+$maxWrapperWidth: 1200px;
+$wrapperPadding: 15px;
+
+// others //
+$squareWidth: 120px;
+$squareHeigh: 120px;
+$squareGap: 10px;
+$gameField: calc(($squareWidth * 4) + ($squareGap * 3));
+// 992px //
+$squareWidth_992: 100px;
+$squareHeigh_992: 100px;
+$squareGap_992: 10px;
+$gameField_992: calc(($squareWidth_992 * 4) + ($squareGap_992 * 3));
+// 768px //
+$squareWidth_768: 80px;
+$squareHeigh_768: 80px;
+$squareGap_768: 10px;
+$gameField_768: calc(($squareWidth_768 * 4) + ($squareGap_768 * 3));
+// 576px //
+$squareWidth_576: 60px;
+$squareHeigh_576: 60px;
+$squareGap_576: 7px;
+$gameField_576: calc(($squareWidth_576 * 4) + ($squareGap_576 * 3));
+// 320px //
+$squareWidth_320: 40px;
+$squareHeigh_320: 40px;
+$squareGap_320: 6px;
+$gameField_320: calc(($squareWidth_320 * 4) + ($squareGap_320 * 3));
+
+// fonts //
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+// colors //
+$body: #1b4d89;
+$bodyHover: #112157;
+$closed1: #a4db79;
+$closed2: #e9ee73;
+$brown1: #6db784;
+$brown2: #6db784;
+$opened: #6db784;
+$shadow: #42445a;
+$darkBrown: #1b4d89;
+$white: #fff;
+
+// mixins //
+@mixin button-reset {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
